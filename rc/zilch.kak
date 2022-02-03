@@ -18,10 +18,11 @@ provide-module zilch %§
 add-highlighter shared/zilch regions
 add-highlighter shared/zilch/code default-region group
 add-highlighter shared/zilch/line_comment region -- $ fill comment
+add-highlighter shared/zilch/multiline_comment region /- -/ fill comment
 add-highlighter shared/zilch/string region %{(?<!')(?<!'\\\\)"} %{(?<!\\\\)(?:\\\\\\\\)*"} fill string
 
 evaluate-commands %sh{
-  keywords='forall ∀ let rec effect alias enum record where class impl export case of import as open'
+  keywords='forall ∀ let rec effect alias enum record where impl export import as open match with type'
   builtins='u8 u16 u32 u64 s8 s16 s32 s64 char ptr ref'
 
   join() { sep=$2; eval set -- $1; IFS="$sep"; echo "$*"; }
